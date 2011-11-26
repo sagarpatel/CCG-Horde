@@ -86,7 +86,7 @@ namespace CCG_Horde
         {
             texture.Dispose();
             spriteBatch.Dispose();
-            game.Dispose();
+           // game.Dispose();
             base.Dispose(disposing);
         }
 
