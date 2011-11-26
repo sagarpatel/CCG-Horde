@@ -43,6 +43,8 @@ namespace CCG_Horde
         {
             // TODO: Add your initialization logic here
 
+            TextureManager.sharedTextureManager.addTexture("clown", Content.Load<Texture2D>("Sprites/ClownPlaceholder512"));
+
             base.Initialize();
         }
 
