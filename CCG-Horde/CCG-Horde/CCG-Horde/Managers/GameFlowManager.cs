@@ -72,7 +72,7 @@ namespace CCG_Horde
         {
 
             player1 = new PlayerObject(myGame, mySpriteBatch);
-
+            player1.isAlive = true;
             myGame.Components.Add(player1);
 
             mainMenu = new MainMenu(myGame, mySpriteBatch);

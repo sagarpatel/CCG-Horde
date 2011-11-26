@@ -28,8 +28,8 @@ namespace CCG_Horde
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            screenWidth = 800;
-            screenHeight = 480;
+            screenWidth = 720;
+            screenHeight = 600;
             screenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
 
             graphics.PreferredBackBufferWidth = screenWidth;
@@ -84,6 +84,7 @@ namespace CCG_Horde
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+      
 
             base.Draw(gameTime);
         }
