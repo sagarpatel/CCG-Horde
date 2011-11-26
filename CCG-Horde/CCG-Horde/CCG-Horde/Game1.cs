@@ -13,7 +13,7 @@ namespace CCG_Horde
 {
     /// <summary>
     /// This is the main type for your game
-    /// </summary>
+    /// </summary>su
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
@@ -43,7 +43,18 @@ namespace CCG_Horde
         {
             // TODO: Add your initialization logic here
 
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
             TextureManager.sharedTextureManager.addTexture("clown", Content.Load<Texture2D>("Sprites/ClownPlaceholder512"));
+
+            GameFlowManager.myGame = this;
+            GameFlowManager.mySpriteBatch = spriteBatch;
+            GameFlowManager.sharedGameFlowManager.manualInit();
+
+
+
+    
+            Components.Add(GameFlowManager.sharedGameFlowManager);
 
             base.Initialize();
         }
@@ -52,7 +63,7 @@ namespace CCG_Horde
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+          //  spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
         }
@@ -84,9 +95,13 @@ namespace CCG_Horde
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
       
 
             base.Draw(gameTime);
+
+            spriteBatch.End();
         }
     }
 }
