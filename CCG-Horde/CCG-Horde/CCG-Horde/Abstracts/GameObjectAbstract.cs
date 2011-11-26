@@ -40,19 +40,24 @@ namespace CCG_Horde
 
         public float speed;
 
-        public enum Orientations
+        public Vector2 tilePosition;
+
+        public struct Orientations
         {
-            North,
-            NorthEast,
-            East,
-            SouthEast,
-            South,
-            SouthWest,
-            West
+           public Vector2 North;
+           public Vector2 NorthEast;
+           public Vector2 East;
+           public Vector2 SouthEast;
+           public Vector2 South;
+           public Vector2 SouthWest;
+           public Vector2 West;
 
         }
 
-        public Orientations orientation;
+        public Orientations orientationList;
+        public Vector2 orientation;
+
+         
 
         public GameObjectAbstract(Game givenGameame, SpriteBatch givenSpriteBatch)
             : base(givenGameame)
@@ -79,6 +84,17 @@ namespace CCG_Horde
             wallBounceDampningFactor = 1f;
 
             speed = 1.0f;
+
+
+            orientationList.North = new Vector2(0, 1);
+            orientationList.NorthEast = new Vector2(1, 1);
+            orientationList.East = new Vector2(1, 0);
+            orientationList.SouthEast = new Vector2(1, -1);
+            orientationList.South = new Vector2(0, -1);
+            orientationList.SouthWest = new Vector2(-1, -1);
+            orientationList.West = new Vector2(-1, 0);
+
+            orientation = orientationList.North;
         }
 
 
@@ -187,6 +203,41 @@ namespace CCG_Horde
             if (topBound <= 0 || bottomBound >= Game1.screenHeight)
                 this.velocity.Y = -this.velocity.Y * wallBounceDampningFactor;
         }
+
+
+
+
+        /////Map based functions
+
+        
+        public bool CheckIfTileFree(Vector2 directionToCheck)
+        {
+            Vector2 tileToCheck = tilePosition + directionToCheck;
+
+            if (GameFlowManager.sharedGameFlowManager.mapArray[(int)tileToCheck.X][(int)tileToCheck.Y] == null)
+            {
+                return true;
+            }
+            else
+                return false;
+
+        }
+
+        public void MoveSingleStep()
+        {
+            if(CheckIfTileFree(this.orientation))
+            {
+                //delete old postion
+                GameFlowManager.sharedGameFlowManager.mapArray[(int)tilePosition.X][(int)tilePosition.Y] = null;
+                    //inert new position
+                tilePosition = tilePosition + orientation;
+              // (GameFlowManager.sharedGameFlowManager.mapArray
+                GameFlowManager.sharedGameFlowManager.mapArray[(int)tilePosition.X][(int)tilePosition.Y] = this;
+
+            }
+
+        }
+
     }
 
 }
