@@ -57,7 +57,20 @@ namespace CCG_Horde
         public Orientations orientationList;
         public Vector2 orientation;
 
-         
+        public enum ObjectType
+        {
+            Player,
+            King,
+            Pawn,
+            Knight,
+            Bishop,
+            Rook,
+            Queen
+
+        }
+
+        public int turnCooldown;
+        int timerCounter;
 
         public GameObjectAbstract(Game givenGameame, SpriteBatch givenSpriteBatch)
             : base(givenGameame)
@@ -95,6 +108,9 @@ namespace CCG_Horde
             orientationList.West = new Vector2(-1, 0);
 
             orientation = orientationList.North;
+
+            turnCooldown = 100;
+            timerCounter = 0;
         }
 
 
@@ -126,16 +142,30 @@ namespace CCG_Horde
         {
             if (this.isAlive)
             {
+                /*
                 if (isWallBounce)
                     wallBounce();
 
 
                 if (currentHP <= 0)
                     this.isAlive = false;
+                 * 
+                 * */
+
+                timerCounter += gameTime.ElapsedGameTime.Milliseconds;
+                if (timerCounter > turnCooldown)
+                {
+                    this.SingleTurn();
+                    timerCounter = 0;
+                }
+
+
             }
 
+            /*
             if (isAlive == false)
                 this.reset();
+             * */
 
             base.Update(gameTime);
         }
@@ -225,8 +255,7 @@ namespace CCG_Horde
 
         public void MoveSingleStep()
         {
-            if(CheckIfTileFree(this.orientation))
-            {
+            
                 //delete old postion
                 GameFlowManager.sharedGameFlowManager.mapArray[(int)tilePosition.X][(int)tilePosition.Y] = null;
                     //inert new position
@@ -234,7 +263,14 @@ namespace CCG_Horde
               // (GameFlowManager.sharedGameFlowManager.mapArray
                 GameFlowManager.sharedGameFlowManager.mapArray[(int)tilePosition.X][(int)tilePosition.Y] = this;
 
-            }
+            
+
+        }
+
+
+        public virtual void SingleTurn()
+        {
+            //Do one move
 
         }
 

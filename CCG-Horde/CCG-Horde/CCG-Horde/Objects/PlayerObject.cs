@@ -37,8 +37,7 @@ namespace CCG_Horde
             
             Vector2 actualPosition = new Vector2(400, 300);
             Rectangle phoneFrame = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
-            position = getEdgePosition_setFacing(actualPosition, phoneFrame);
-
+          
 
             facing = new Vector2(0, 0);
             isAlive = true;
@@ -96,120 +95,20 @@ namespace CCG_Horde
 
         //Custom functions
 
-        private Vector2 getEdgePosition_setFacing(Vector2 inputPosition, Rectangle frameRectangle)
+        public override void SingleTurn()
         {
-
-            int deltaX;
-            int deltaY;
-
-            //Left half 
-            if (inputPosition.X < frameRectangle.Right / 2)
+            if (CheckIfTileFree(this.orientation))
             {
-                deltaX = (int)inputPosition.X - frameRectangle.Left;
-
-                // Top left Quadrant
-                if (inputPosition.Y < frameRectangle.Bottom / 2)
-                {
-                    deltaY = (int)inputPosition.Y - frameRectangle.Top;
-                    //closer to left edge
-                    if (deltaX < deltaY)
-                    {
-                        facing = new Vector2(1, 0);
-                        return new Vector2(frameRectangle.Left, inputPosition.Y);
-                    }
-                    //closer to top edge 
-                    else
-                    {
-                        facing = new Vector2(0, 1);
-                        return new Vector2(inputPosition.X, frameRectangle.Top);
-                    }
-                }
-
-                // Bottom Left Quadrant
-                else
-                {
-                    deltaY = frameRectangle.Bottom - (int)inputPosition.Y;
-                    //closer to left edge
-                    if (deltaX < deltaY)
-                    {
-                        facing = new Vector2(1, 0);
-                        return new Vector2(frameRectangle.Left, inputPosition.Y);
-                    }
-                    //closer to bottom edge
-                    else
-                    {
-                        facing = new Vector2(0, -1);
-                        return new Vector2(inputPosition.X, frameRectangle.Bottom);
-                    }
-                }
+                MoveSingleStep();
             }
-
-            //Right half
             else
             {
-                deltaX = frameRectangle.Right - (int)inputPosition.X;
-
-                //Top Right Quadrant
-                if (inputPosition.Y < frameRectangle.Bottom / 2)
-                {
-                    deltaY = (int)inputPosition.Y - frameRectangle.Top;
-                    //closer to right edge
-                    if (deltaX < deltaY)
-                    {
-                        facing = new Vector2(-1, 0);
-                        return new Vector2(frameRectangle.Right, inputPosition.Y);
-                    }
-                    //closer to top edge
-                    else
-                    {
-                        facing = new Vector2(0, 1);
-                        return new Vector2(inputPosition.X, frameRectangle.Top);
-                    }
-                }
-
-                //Bottom Right Quadrant
-                else
-                {
-                    deltaY = frameRectangle.Bottom - (int)inputPosition.Y;
-                    //closer to right edge
-                    if (deltaX < deltaY)
-                    {
-                        facing = new Vector2(-1, 0);
-                        return new Vector2(frameRectangle.Right, inputPosition.Y);
-                    }
-                    //closer to bottom edge
-                    else
-                    {
-                        facing = new Vector2(0, -1);
-                        return new Vector2(inputPosition.X, frameRectangle.Bottom);
-                    }
-                }
-
+                ///kill unit on destination tile
             }
-
+            
+            
+            base.SingleTurn();
         }
-
-
-        private void HandleWeapons(GameTime gameTime)
-        {
-
-            switch (currentWeaponIndex)
-            {
-                case 0:
-                    // for weapon 1
-                 //   simpleWeapon.FireWeapon(gameTime, this);
-                    break;
-
-                //case 1:
-                //    // for weapon2
-
-
-                //    break;
-            }
-
-
-        }
-
 
 
 
