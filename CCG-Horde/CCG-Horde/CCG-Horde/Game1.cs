@@ -37,7 +37,7 @@ namespace CCG_Horde
 
         }
 
-     
+ 
 
         protected override void Initialize()
         {
@@ -77,18 +77,19 @@ namespace CCG_Horde
 
   
 
+
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
-
             base.Update(gameTime);
         }
 
   
+
+
 
         protected override void Draw(GameTime gameTime)
         {
