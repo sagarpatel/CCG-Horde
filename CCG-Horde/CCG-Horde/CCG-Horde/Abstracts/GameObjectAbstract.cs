@@ -51,6 +51,7 @@ namespace CCG_Horde
            public Vector2 South;
            public Vector2 SouthWest;
            public Vector2 West;
+           public Vector2 NorthWest;
 
         }
 
@@ -106,6 +107,7 @@ namespace CCG_Horde
             orientationList.South = new Vector2(0, -1);
             orientationList.SouthWest = new Vector2(-1, -1);
             orientationList.West = new Vector2(-1, 0);
+            orientationList.NorthWest = new Vector2(-1, 1);
 
             orientation = orientationList.North;
 
@@ -242,20 +244,32 @@ namespace CCG_Horde
         
         public bool CheckIfTileFree(Vector2 directionToCheck)
         {
-            Vector2 tileToCheck = tilePosition + directionToCheck;
-
-            if (GameFlowManager.sharedGameFlowManager.mapArray[(int)tileToCheck.X][(int)tileToCheck.Y] == null)
+            if (isNextTileInRing())
             {
-                return true;
+
+                Vector2 tileToCheck = tilePosition + directionToCheck;
+
+
+
+                if (GameFlowManager.sharedGameFlowManager.mapArray[(int)tileToCheck.X][(int)tileToCheck.Y] == null)
+                {
+                    return true;
+                }
+                else
+                    return false;
+
             }
             else
+            {
                 return false;
+            }
 
         }
 
         public void MoveSingleStep()
         {
-            
+       
+
                 //delete old postion
                 GameFlowManager.sharedGameFlowManager.mapArray[(int)tilePosition.X][(int)tilePosition.Y] = null;
                     //inert new position
@@ -264,6 +278,26 @@ namespace CCG_Horde
                 GameFlowManager.sharedGameFlowManager.mapArray[(int)tilePosition.X][(int)tilePosition.Y] = this;
 
             
+
+        }
+
+        public bool isNextTileInRing()
+        {
+            Vector2 nextTilePosition = tilePosition + orientation;
+            int mapSize = GameFlowManager.sharedGameFlowManager.mapSize;
+
+            if( 
+                ((int)nextTilePosition.X >= mapSize || (int)nextTilePosition.X <= 0)
+                ||
+                ((int)nextTilePosition.Y >= mapSize || (int)nextTilePosition.Y <= 0)
+            )
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
 
         }
 

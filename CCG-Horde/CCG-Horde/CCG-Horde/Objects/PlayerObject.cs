@@ -152,7 +152,7 @@ namespace CCG_Horde
         {
             if (CheckIfTileFree(this.orientation))
             {
-                MoveSingleStep();
+                    MoveSingleStep();
             }
             else
             {
