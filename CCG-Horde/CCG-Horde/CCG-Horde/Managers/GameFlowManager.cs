@@ -49,7 +49,7 @@ namespace CCG_Horde
 
 
 
-        GameObjectAbstract[][] mapArray;
+        public GameObjectAbstract[][] mapArray;
         int mapSize;
 
 
