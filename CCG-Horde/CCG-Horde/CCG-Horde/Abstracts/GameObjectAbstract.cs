@@ -40,6 +40,20 @@ namespace CCG_Horde
 
         public float speed;
 
+        public enum Orientations
+        {
+            North,
+            NorthEast,
+            East,
+            SouthEast,
+            South,
+            SouthWest,
+            West
+
+        }
+
+        public Orientations orientation;
+
         public GameObjectAbstract(Game givenGameame, SpriteBatch givenSpriteBatch)
             : base(givenGameame)
         {

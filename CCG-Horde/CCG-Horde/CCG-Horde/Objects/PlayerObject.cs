@@ -34,7 +34,7 @@ namespace CCG_Horde
         {
 
             texture = TextureManager.sharedTextureManager.getTexture("clown");
-
+            
             Vector2 actualPosition = new Vector2(400, 300);
             Rectangle phoneFrame = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             position = getEdgePosition_setFacing(actualPosition, phoneFrame);

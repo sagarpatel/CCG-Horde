@@ -22,6 +22,7 @@ namespace CCG_Horde
 
         public PlayerObject player1;
         public MainMenu mainMenu;
+        public CreepyCarnivalLevel ccLevel;
         /*
         public Level_1_1 level_1_1;
         public Level_1_2 level_1_2;
@@ -46,11 +47,27 @@ namespace CCG_Horde
 
         Random rand;
 
+
+
+        GameObjectAbstract[][] mapArray;
+        int mapSize;
+
+
+
         private GameFlowManager(Game game, SpriteBatch mySpriteBatch)
             : base(game)
         {
             screenList = new List<ScreenAbstract>();
             rand = new Random();
+
+
+            mapSize = 8;
+
+            mapArray = new GameObjectAbstract[mapSize][];
+            for (int i = 0; i < mapSize; i++)
+            {
+                mapArray[i] = new GameObjectAbstract[mapSize];
+            }
         }
 
         public static GameFlowManager sharedGameFlowManager
@@ -79,6 +96,11 @@ namespace CCG_Horde
             mainMenu.isActive = true;
             screenList.Add(mainMenu);
             myGame.Components.Add(mainMenu);
+
+            ccLevel = new CreepyCarnivalLevel(myGame, mySpriteBatch);
+            ccLevel.isActive = false;
+            screenList.Add(ccLevel);
+
             /*
 
             level_1_1 = new Level_1_1(myGame, mySpriteBatch);
