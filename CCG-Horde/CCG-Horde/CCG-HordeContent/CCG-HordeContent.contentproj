@@ -45,8 +45,8 @@
     <Folder Include="Screens\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\ClownPlaceholder512.png">
-      <Name>ClownPlaceholder512</Name>
+    <Compile Include="Sprites\ClownPlaceholder225.png">
+      <Name>ClownPlaceholder225</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
