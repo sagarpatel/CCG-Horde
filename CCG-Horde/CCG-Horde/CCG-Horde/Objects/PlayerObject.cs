@@ -88,71 +88,54 @@ namespace CCG_Horde
 
         float vibrationAmount = 0.0f;
 
-        void UpdateInput()
-        {
+
+
+
+
+
+
+
+
+
+
+        void UpdateInput(){
             // Get the current gamepad state.
             GamePadState currentState = GamePad.GetState(PlayerIndex.One);
-            if (currentState.IsConnected && currentState.DPad.Up ==
-               ButtonState.Pressed && currentState.DPad.Right ==
-               ButtonState.Pressed)
+            if (currentState.IsConnected && currentState.DPad.Up ==ButtonState.Pressed){
+                // Button A is currently being pressed; add vibration.
+                orientation = orientationList.North;
+            }else if (currentState.IsConnected && currentState.DPad.Right ==ButtonState.Pressed){
+                // Button A is currently being pressed; add vibration.
+                orientation = orientationList.East;
+            }else if (currentState.IsConnected && currentState.DPad.Down ==ButtonState.Pressed){
+                // Button A is currently being pressed; add vibration.
+                orientation = orientationList.South;
+            }else if (currentState.IsConnected && currentState.DPad.Left ==ButtonState.Pressed){
+                // Button A is currently being pressed; add vibration.
+                orientation = orientationList.West;
+            }
+
+            else if (currentState.IsConnected && currentState.DPad.Up ==ButtonState.Pressed && currentState.DPad.Left ==ButtonState.Pressed){
+                // Button A is currently being pressed; add vibration.
+                orientation = orientationList.NorthWest;
+            }
+            else if (currentState.IsConnected && currentState.DPad.Up == ButtonState.Pressed && currentState.DPad.Right == ButtonState.Pressed)
             {
                 // Button A is currently being pressed; add vibration.
-                vibrationAmount =
-                    MathHelper.Clamp(vibrationAmount + 0.03f, 0.0f, 1.0f);
-                GamePad.SetVibration(PlayerIndex.One,
-                    vibrationAmount, vibrationAmount);
+                orientation = orientationList.NorthEast;
             }
-            // Process input only if connected and button A is pressed.
-            /* if (currentState.IsConnected && currentState.DPad.Up ==
-                 ButtonState.Pressed)
-             {
-                 // Button A is currently being pressed; add vibration.
-                 vibrationAmount =
-                     MathHelper.Clamp(vibrationAmount + 0.03f, 0.0f, 1.0f);
-                 GamePad.SetVibration(PlayerIndex.One,
-                     vibrationAmount, vibrationAmount);
-             }
-             else if (currentState.IsConnected && currentState.DPad.Right ==
-           ButtonState.Pressed)
-             {
-                 // Button A is currently being pressed; add vibration.
-                 vibrationAmount =
-                     MathHelper.Clamp(vibrationAmount + 0.03f, 0.0f, 1.0f);
-                 GamePad.SetVibration(PlayerIndex.One,
-                     vibrationAmount, vibrationAmount);
-             }
-
-             else if (currentState.IsConnected && currentState.DPad.Down ==
-                ButtonState.Pressed)
-             {
-                 // Button A is currently being pressed; add vibration.
-                 vibrationAmount =
-                     MathHelper.Clamp(vibrationAmount + 0.03f, 0.0f, 1.0f);
-                 GamePad.SetVibration(PlayerIndex.One,
-                     vibrationAmount, vibrationAmount);
-             }
-             else if (currentState.IsConnected && currentState.DPad.Left ==
-           ButtonState.Pressed)
-             {
-                 // Button A is currently being pressed; add vibration.
-                 vibrationAmount =
-                     MathHelper.Clamp(vibrationAmount + 0.03f, 0.0f, 1.0f);
-                 GamePad.SetVibration(PlayerIndex.One,
-                     vibrationAmount, vibrationAmount);
-             }*/
-
-            else
+            else if (currentState.IsConnected && currentState.DPad.Down == ButtonState.Pressed && currentState.DPad.Right == ButtonState.Pressed)
             {
-                // Button A is not being pressed; subtract some vibration.
-                vibrationAmount =
-                    MathHelper.Clamp(vibrationAmount - 0.05f, 0.0f, 1.0f);
-                GamePad.SetVibration(PlayerIndex.One,
-                    vibrationAmount, vibrationAmount);
+                // Button A is currently being pressed; add vibration.
+                orientation = orientationList.SouthEast;
             }
+            else if (currentState.IsConnected && currentState.DPad.Down == ButtonState.Pressed && currentState.DPad.Left == ButtonState.Pressed)
+            {
+                // Button A is currently being pressed; add vibration.
+                orientation = orientationList.SouthWest;
+            }
+ 
         }
-
-
-
 
 
         public override void Draw(GameTime gameTime)
