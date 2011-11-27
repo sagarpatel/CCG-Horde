@@ -182,8 +182,8 @@ namespace CCG_Horde
 
                 //set position relative to tile
 
-                position.X = tilePosition.X * texture.Width / frameCount +200;
-                position.Y = tilePosition.Y * texture.Height + 200;
+                position.X = tilePosition.X * texture.Width / frameCount +100;
+                position.Y = tilePosition.Y * texture.Height + 100;
 
             }
 

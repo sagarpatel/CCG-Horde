@@ -25,11 +25,58 @@ namespace CCG_Horde
         }
 
 
+        protected override void LoadContent()
+        {
+
+            texture = TextureManager.sharedTextureManager.getTexture("clown");
 
 
+            facing = new Vector2(0, 0);
+            isAlive = true;
+            isWallBounce = false;
+
+            turnCooldown = 500;
 
 
+            base.LoadContent();
+        }
 
+
+        public override void Update(GameTime gameTime)
+        {
+            if (this.isAlive)
+            {
+               
+
+            }
+            base.Update(gameTime);
+        }
+
+
+        public override void Draw(GameTime gameTime)
+        {
+
+
+            base.Draw(gameTime);
+        }
+
+
+        //Custom functions
+
+        public override void SingleTurn()
+        {
+            if (CheckIfTileFree(this.orientation))
+            {
+                MoveSingleStep();
+            }
+            else
+            {
+                ///kill unit on destination tile
+            }
+
+
+            base.SingleTurn();
+        }
 
 
     }
