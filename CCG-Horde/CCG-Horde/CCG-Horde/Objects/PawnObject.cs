@@ -32,7 +32,7 @@ namespace CCG_Horde
 
 
             facing = new Vector2(0, 0);
-            isAlive = true;
+            isAlive = false;
             isWallBounce = false;
 
             turnCooldown = 500;

@@ -46,6 +46,8 @@ namespace CCG_Horde
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             TextureManager.sharedTextureManager.addTexture("clown", Content.Load<Texture2D>("Sprites/ClownPlaceholder225"));
+            TextureManager.sharedTextureManager.addTexture("background", Content.Load<Texture2D>("Sprites/CHESS_TEST"));
+            TextureManager.sharedTextureManager.addTexture("board", Content.Load<Texture2D>("Sprites/CHESS_TILES"));
 
             GameFlowManager.myGame = this;
             GameFlowManager.mySpriteBatch = spriteBatch;

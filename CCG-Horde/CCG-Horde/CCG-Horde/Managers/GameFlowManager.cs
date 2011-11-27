@@ -100,6 +100,8 @@ namespace CCG_Horde
             ccLevel = new CreepyCarnivalLevel(myGame, mySpriteBatch);
             ccLevel.isActive = false;
             screenList.Add(ccLevel);
+            //cheating
+            myGame.Components.Add(ccLevel);
 
             /*
 

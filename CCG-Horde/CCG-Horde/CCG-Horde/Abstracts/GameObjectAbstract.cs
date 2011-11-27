@@ -154,9 +154,9 @@ namespace CCG_Horde
              sourceRectangle = new Rectangle(frameIndex * texture.Width / frameCount, 0, texture.Width / frameCount, texture.Height);
        
 
-             origin = new Vector2(((texture.Width/frameCount) /2) * scale, (texture.Height / 2) * scale);
+            // origin = new Vector2(((texture.Width/frameCount) /2) * scale, (texture.Height / 2) * scale);
 
-            
+             origin = new Vector2(0, 0);
 
             if (this.isAlive)
             {
@@ -182,7 +182,7 @@ namespace CCG_Horde
 
                 //set position relative to tile
 
-                position.X = tilePosition.X * texture.Width / frameCount +100;
+                position.X = tilePosition.X * texture.Width / frameCount + 300;
                 position.Y = tilePosition.Y * texture.Height + 100;
 
             }
