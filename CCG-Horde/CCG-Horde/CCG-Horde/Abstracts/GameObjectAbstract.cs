@@ -73,6 +73,11 @@ namespace CCG_Horde
         public int turnCooldown;
         int timerCounter;
 
+        public int frameIndex;
+
+        public Rectangle sourceRectangle;
+        public int frameCount;
+
         public GameObjectAbstract(Game givenGameame, SpriteBatch givenSpriteBatch)
             : base(givenGameame)
         {
@@ -113,6 +118,9 @@ namespace CCG_Horde
 
             turnCooldown = 100;
             timerCounter = 0;
+
+            frameIndex = 0;
+            frameCount = 3;
         }
 
 
@@ -142,8 +150,18 @@ namespace CCG_Horde
 
         public override void Update(GameTime gameTime)
         {
+
+             sourceRectangle = new Rectangle(frameIndex * texture.Width / frameCount, 0, texture.Width / frameCount, texture.Height / frameCount);
+          //  sourceRectangle = new Rectangle(frameIndex * texture.Width / 3, 0, texture.Width / 3, texture.Height / 3);
+
+             origin = new Vector2(((texture.Width/frameCount) /2) * scale, (texture.Height / 2) * scale);
+
+            
+
             if (this.isAlive)
             {
+
+
                 /*
                 if (isWallBounce)
                     wallBounce();
@@ -162,6 +180,11 @@ namespace CCG_Horde
                 }
 
 
+                //set position relative to tile
+
+                position.X = tilePosition.X * texture.Width / frameCount + 100;
+                position.Y = tilePosition.Y * texture.Height + 100 ;
+
             }
 
             /*
@@ -176,7 +199,13 @@ namespace CCG_Horde
         public override void Draw(GameTime gameTime)
         {
             if (isAlive)
-                spriteBatch.Draw(texture, position, null, color, rotation, origin, scale, SpriteEffects.None, 0f);
+            {
+                //spriteBatch.Draw(texture, position, null, color, rotation, origin, scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(texture, position, sourceRectangle, color, 0f, origin, scale, SpriteEffects.None, 0);
+            }
+            frameIndex++;
+            if (frameIndex == 3)
+                frameIndex = 0;
 
             base.Draw(gameTime);
         }
