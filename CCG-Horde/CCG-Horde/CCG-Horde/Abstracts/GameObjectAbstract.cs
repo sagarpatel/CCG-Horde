@@ -373,11 +373,11 @@ namespace CCG_Horde
 
             if (orientation == orientationList.North)
             {
-                frameIndex = 0;
+                frameIndex = 4;
             }
             if (orientation == orientationList.NorthEast)
             {
-                frameIndex = 1;
+                frameIndex = 3;
             }
             if (orientation == orientationList.East)
             {
@@ -385,15 +385,15 @@ namespace CCG_Horde
             }
             if (orientation == orientationList.SouthEast)
             {
-                frameIndex = 3;
+                frameIndex = 1;
             }
             if (orientation == orientationList.South)
             {
-                frameIndex = 4;
+                frameIndex = 0;
             }
             if (orientation == orientationList.SouthWest)
             {
-                frameIndex = 5;
+                frameIndex = 7;
             }
             if (orientation == orientationList.West)
             {
@@ -401,7 +401,7 @@ namespace CCG_Horde
             }
             if (orientation == orientationList.NorthWest)
             {
-                frameIndex = 7;
+                frameIndex = 5;
             }
 
         }

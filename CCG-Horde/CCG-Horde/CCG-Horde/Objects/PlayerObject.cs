@@ -33,7 +33,7 @@ namespace CCG_Horde
         protected override void LoadContent()
         {
 
-            texture = TextureManager.sharedTextureManager.getTexture("clown");
+            texture = TextureManager.sharedTextureManager.getTexture("player");
             
             Vector2 actualPosition = new Vector2(400, 300);
             Rectangle phoneFrame = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
