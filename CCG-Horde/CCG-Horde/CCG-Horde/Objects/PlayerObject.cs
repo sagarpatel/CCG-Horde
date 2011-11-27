@@ -156,7 +156,25 @@ namespace CCG_Horde
             }
             else
             {
-                ///kill unit on destination tile
+                /// check-->kill unit on destination tile
+                /// 
+
+                GameObjectAbstract target = this.getObjectAtNextTile(this.orientation);
+
+                if (target != null)
+                {
+                    Vector2 targetPosition = target.tilePosition;
+                    target.isAlive = false;
+                    GameFlowManager.sharedGameFlowManager.mapArray[(int)targetPosition.X][(int)targetPosition.Y] = null;
+
+                  //  GameFlowManager.sharedGameFlowManager.mapArray[(int)targetPosition.X][(int)targetPosition.Y] = this;
+                    this.position = targetPosition;
+
+
+                }
+
+
+
             }
             
             

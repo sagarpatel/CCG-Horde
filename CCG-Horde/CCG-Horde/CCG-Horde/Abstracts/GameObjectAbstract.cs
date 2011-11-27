@@ -330,6 +330,30 @@ namespace CCG_Horde
 
         }
 
+        public GameObjectAbstract getObjectAtNextTile(Vector2 directionToCheck)
+        {
+            Vector2 tileToCheck = tilePosition + directionToCheck;
+
+            if (isNextTileInRing())
+            {
+
+                if (GameFlowManager.sharedGameFlowManager.mapArray[(int)tileToCheck.X][(int)tileToCheck.Y] == null)
+                {
+                    return null;
+                }
+
+                else
+                {
+                    return GameFlowManager.sharedGameFlowManager.mapArray[(int)tileToCheck.X][(int)tileToCheck.Y];
+                }
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
 
         public virtual void SingleTurn()
         {
