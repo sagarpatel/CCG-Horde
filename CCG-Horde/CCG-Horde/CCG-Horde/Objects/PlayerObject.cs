@@ -103,36 +103,36 @@ namespace CCG_Horde
             GamePadState currentState = GamePad.GetState(PlayerIndex.One);
             if (currentState.IsConnected && currentState.DPad.Up ==ButtonState.Pressed){
                 // Button A is currently being pressed; add vibration.
-                orientation = orientationList.North;
-            }else if (currentState.IsConnected && currentState.DPad.Right ==ButtonState.Pressed){
+                orientation = orientationList.South;
+            }if (currentState.IsConnected && currentState.DPad.Right ==ButtonState.Pressed){
                 // Button A is currently being pressed; add vibration.
                 orientation = orientationList.East;
-            }else if (currentState.IsConnected && currentState.DPad.Down ==ButtonState.Pressed){
+            }if (currentState.IsConnected && currentState.DPad.Down ==ButtonState.Pressed){
                 // Button A is currently being pressed; add vibration.
-                orientation = orientationList.South;
-            }else if (currentState.IsConnected && currentState.DPad.Left ==ButtonState.Pressed){
+                orientation = orientationList.North;
+            }if (currentState.IsConnected && currentState.DPad.Left ==ButtonState.Pressed){
                 // Button A is currently being pressed; add vibration.
                 orientation = orientationList.West;
             }
 
-            else if (currentState.IsConnected && currentState.DPad.Up ==ButtonState.Pressed && currentState.DPad.Left ==ButtonState.Pressed){
+            if (currentState.IsConnected && currentState.DPad.Up ==ButtonState.Pressed && currentState.DPad.Left ==ButtonState.Pressed){
                 // Button A is currently being pressed; add vibration.
-                orientation = orientationList.NorthWest;
+                orientation = orientationList.SouthWest;
             }
-            else if (currentState.IsConnected && currentState.DPad.Up == ButtonState.Pressed && currentState.DPad.Right == ButtonState.Pressed)
-            {
-                // Button A is currently being pressed; add vibration.
-                orientation = orientationList.NorthEast;
-            }
-            else if (currentState.IsConnected && currentState.DPad.Down == ButtonState.Pressed && currentState.DPad.Right == ButtonState.Pressed)
+            if (currentState.IsConnected && currentState.DPad.Up == ButtonState.Pressed && currentState.DPad.Right == ButtonState.Pressed)
             {
                 // Button A is currently being pressed; add vibration.
                 orientation = orientationList.SouthEast;
             }
-            else if (currentState.IsConnected && currentState.DPad.Down == ButtonState.Pressed && currentState.DPad.Left == ButtonState.Pressed)
+            if (currentState.IsConnected && currentState.DPad.Down == ButtonState.Pressed && currentState.DPad.Right == ButtonState.Pressed)
             {
                 // Button A is currently being pressed; add vibration.
-                orientation = orientationList.SouthWest;
+                orientation = orientationList.NorthEast;
+            }
+            if (currentState.IsConnected && currentState.DPad.Down == ButtonState.Pressed && currentState.DPad.Left == ButtonState.Pressed)
+            {
+                // Button A is currently being pressed; add vibration.
+                orientation = orientationList.NorthWest;
             }
  
         }

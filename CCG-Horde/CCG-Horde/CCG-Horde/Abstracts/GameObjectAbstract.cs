@@ -120,7 +120,7 @@ namespace CCG_Horde
             timerCounter = 0;
 
             frameIndex = 0;
-            frameCount = 3;
+            frameCount = 8;
         }
 
 
@@ -151,8 +151,8 @@ namespace CCG_Horde
         public override void Update(GameTime gameTime)
         {
 
-             sourceRectangle = new Rectangle(frameIndex * texture.Width / frameCount, 0, texture.Width / frameCount, texture.Height / frameCount);
-          //  sourceRectangle = new Rectangle(frameIndex * texture.Width / 3, 0, texture.Width / 3, texture.Height / 3);
+             sourceRectangle = new Rectangle(frameIndex * texture.Width / frameCount, 0, texture.Width / frameCount, texture.Height);
+       
 
              origin = new Vector2(((texture.Width/frameCount) /2) * scale, (texture.Height / 2) * scale);
 
@@ -182,8 +182,8 @@ namespace CCG_Horde
 
                 //set position relative to tile
 
-                position.X = tilePosition.X * texture.Width / frameCount + 100;
-                position.Y = tilePosition.Y * texture.Height + 100 ;
+                position.X = tilePosition.X * texture.Width / frameCount +200;
+                position.Y = tilePosition.Y * texture.Height + 200;
 
             }
 
@@ -204,7 +204,7 @@ namespace CCG_Horde
                 spriteBatch.Draw(texture, position, sourceRectangle, color, 0f, origin, scale, SpriteEffects.None, 0);
             }
             frameIndex++;
-            if (frameIndex == 3)
+            if (frameIndex == frameCount)
                 frameIndex = 0;
 
             base.Draw(gameTime);
@@ -316,9 +316,9 @@ namespace CCG_Horde
             int mapSize = GameFlowManager.sharedGameFlowManager.mapSize;
 
             if( 
-                ((int)nextTilePosition.X >= mapSize || (int)nextTilePosition.X <= 0)
+                ((int)nextTilePosition.X >= mapSize || (int)nextTilePosition.X < 0)
                 ||
-                ((int)nextTilePosition.Y >= mapSize || (int)nextTilePosition.Y <= 0)
+                ((int)nextTilePosition.Y >= mapSize || (int)nextTilePosition.Y < 0)
             )
             {
                 return false;

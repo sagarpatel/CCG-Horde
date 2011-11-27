@@ -28,8 +28,8 @@ namespace CCG_Horde
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            screenWidth = 720;
-            screenHeight = 600;
+            screenWidth = 1200;
+            screenHeight = 720;
             screenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
 
             graphics.PreferredBackBufferWidth = screenWidth;
