@@ -187,6 +187,8 @@ namespace CCG_Horde
 
             }
 
+            updateSpriteFrame();
+
             /*
             if (isAlive == false)
                 this.reset();
@@ -203,9 +205,13 @@ namespace CCG_Horde
                 //spriteBatch.Draw(texture, position, null, color, rotation, origin, scale, SpriteEffects.None, 0f);
                 spriteBatch.Draw(texture, position, sourceRectangle, color, 0f, origin, scale, SpriteEffects.None, 0);
             }
+
+            /*
             frameIndex++;
             if (frameIndex == frameCount)
                 frameIndex = 0;
+             * 
+             * */
 
             base.Draw(gameTime);
         }
@@ -358,6 +364,45 @@ namespace CCG_Horde
         public virtual void SingleTurn()
         {
             //Do one move
+
+        }
+
+
+        public void updateSpriteFrame()
+        {
+
+            if (orientation == orientationList.North)
+            {
+                frameIndex = 0;
+            }
+            if (orientation == orientationList.NorthEast)
+            {
+                frameIndex = 1;
+            }
+            if (orientation == orientationList.East)
+            {
+                frameIndex = 2;
+            }
+            if (orientation == orientationList.SouthEast)
+            {
+                frameIndex = 3;
+            }
+            if (orientation == orientationList.South)
+            {
+                frameIndex = 4;
+            }
+            if (orientation == orientationList.SouthWest)
+            {
+                frameIndex = 5;
+            }
+            if (orientation == orientationList.West)
+            {
+                frameIndex = 6;
+            }
+            if (orientation == orientationList.NorthWest)
+            {
+                frameIndex = 7;
+            }
 
         }
 
