@@ -21,6 +21,7 @@ namespace CCG_Horde
         public PawnObject(Game game, SpriteBatch givenSpriteBatch)
             : base(game, givenSpriteBatch)
         {
+            myType = ObjectType.Pawn;
 
         }
 
@@ -32,10 +33,10 @@ namespace CCG_Horde
 
 
             facing = new Vector2(0, 0);
-            isAlive = false;
+            isAlive = false;    
             isWallBounce = false;
 
-            turnCooldown = 500;
+            turnCooldown = 1500;
 
 
             base.LoadContent();
@@ -71,7 +72,72 @@ namespace CCG_Horde
             }
             else
             {
-                ///kill unit on destination tile
+                
+                /// check-->kill unit on destination tile
+                /// 
+
+                GameObjectAbstract target = this.getObjectAtNextTile(this.orientation);
+
+
+
+                if (target != null)
+                {
+                    if (target.myType == ObjectType.King)
+                    {
+
+                        Vector2 targetPosition = target.tilePosition;
+                        target.isAlive = false;
+                        GameFlowManager.sharedGameFlowManager.mapArray[(int)targetPosition.X][(int)targetPosition.Y] = null;
+
+                        //  GameFlowManager.sharedGameFlowManager.mapArray[(int)targetPosition.X][(int)targetPosition.Y] = this;
+                        this.position = targetPosition;
+                        game.Exit();
+                    }
+                    else
+                    {
+
+                        ///kill unit on destination tile
+                        if (orientation == orientationList.North)
+                        {
+                            orientation = orientationList.East;
+                        }
+                        else if (orientation == orientationList.East)
+                        {
+                            orientation = orientationList.South;
+                        }
+                        else if (orientation == orientationList.South)
+                        {
+                            orientation = orientationList.West;
+                        }
+                        else if (orientation == orientationList.West)
+                        {
+                            orientation = orientationList.North;
+                        }
+                    }
+
+                }
+                else
+                {
+
+                    ///kill unit on destination tile
+                    if (orientation == orientationList.North)
+                    {
+                        orientation = orientationList.East;
+                    }
+                    else if (orientation == orientationList.East)
+                    {
+                        orientation = orientationList.South;
+                    }
+                    else if (orientation == orientationList.South)
+                    {
+                        orientation = orientationList.West;
+                    }
+                    else if (orientation == orientationList.West)
+                    {
+                        orientation = orientationList.North;
+                    }
+                }
+
             }
 
 

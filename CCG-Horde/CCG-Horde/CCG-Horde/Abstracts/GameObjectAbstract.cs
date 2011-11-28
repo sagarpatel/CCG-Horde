@@ -70,6 +70,8 @@ namespace CCG_Horde
 
         }
 
+        public ObjectType myType;
+
         public int turnCooldown;
         int timerCounter;
 
@@ -121,6 +123,8 @@ namespace CCG_Horde
 
             frameIndex = 0;
             frameCount = 8;
+
+            
         }
 
 

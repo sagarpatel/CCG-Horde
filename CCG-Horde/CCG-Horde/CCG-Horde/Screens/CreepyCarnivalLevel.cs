@@ -24,6 +24,9 @@ namespace CCG_Horde
         int spawnCounter;
         int spawnCooldown;
 
+
+        KingObject king;
+
         public CreepyCarnivalLevel(Game game, SpriteBatch givenSpriteBatch): base(game, givenSpriteBatch)
         {
 
@@ -39,6 +42,15 @@ namespace CCG_Horde
 
             spawnCooldown = 500;
             spawnCounter = 0;
+
+            king = new KingObject(game, givenSpriteBatch);
+            king.tilePosition = new Vector2(7, 4);
+            king.isAlive = true;
+            Game.Components.Add(king);
+            king.isAlive = true;
+
+            GameFlowManager.sharedGameFlowManager.mapArray[(int)king.tilePosition.X][(int)king.tilePosition.Y] = king;
+            
         }
 
         public override void Update(GameTime gameTime)

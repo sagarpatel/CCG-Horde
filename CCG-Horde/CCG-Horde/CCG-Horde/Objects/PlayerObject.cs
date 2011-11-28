@@ -26,7 +26,7 @@ namespace CCG_Horde
         public PlayerObject(Game game, SpriteBatch givenSpriteBatch)
             : base(game, givenSpriteBatch)
         {
-
+            myType = ObjectType.Player;
         }
 
 
@@ -50,6 +50,8 @@ namespace CCG_Horde
 
             currentWeaponIndex = 0;
             maxWeaponIndex = 0;
+
+            turnCooldown = 300;
 
             base.LoadContent();
         }
@@ -160,15 +162,19 @@ namespace CCG_Horde
                 /// 
 
                 GameObjectAbstract target = this.getObjectAtNextTile(this.orientation);
-
+            
                 if (target != null)
                 {
-                    Vector2 targetPosition = target.tilePosition;
-                    target.isAlive = false;
-                    GameFlowManager.sharedGameFlowManager.mapArray[(int)targetPosition.X][(int)targetPosition.Y] = null;
+                    if (target.myType != ObjectType.King)
+                    {
 
-                  //  GameFlowManager.sharedGameFlowManager.mapArray[(int)targetPosition.X][(int)targetPosition.Y] = this;
-                    this.position = targetPosition;
+                        Vector2 targetPosition = target.tilePosition;
+                        target.isAlive = false;
+                        GameFlowManager.sharedGameFlowManager.mapArray[(int)targetPosition.X][(int)targetPosition.Y] = null;
+
+                        //  GameFlowManager.sharedGameFlowManager.mapArray[(int)targetPosition.X][(int)targetPosition.Y] = this;
+                        this.position = targetPosition;
+                    }
 
 
                 }

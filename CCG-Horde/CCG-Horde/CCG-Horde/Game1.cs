@@ -34,6 +34,7 @@ namespace CCG_Horde
 
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
+            this.graphics.IsFullScreen = true;
 
         }
 
@@ -49,6 +50,7 @@ namespace CCG_Horde
             TextureManager.sharedTextureManager.addTexture("background", Content.Load<Texture2D>("Sprites/CHESS_TEST"));
             TextureManager.sharedTextureManager.addTexture("board", Content.Load<Texture2D>("Sprites/CHESS_TILES"));
             TextureManager.sharedTextureManager.addTexture("player", Content.Load<Texture2D>("Sprites/Queen"));
+            TextureManager.sharedTextureManager.addTexture("king", Content.Load<Texture2D>("Sprites/King"));
 
             GameFlowManager.myGame = this;
             GameFlowManager.mySpriteBatch = spriteBatch;
